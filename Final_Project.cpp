@@ -1,12 +1,3 @@
-/*
-(a) -
-(b)
-(c)
-(d) - Balance
-(e)	- Deposit
-(f) - Withdraw
-(g)
-*/
 #include <iostream>
 #include <math.h>
 
@@ -20,7 +11,6 @@ struct QuitNow: public std::exception
            "(You should not see this message. Please report it if you do.)";
     }
   };
-
 using namespace std;
 
 int menu();
