@@ -47,10 +47,10 @@ int main() {
   while (login == true) {
     switch(selection) {
       case 2:
-        if (accounts[accountNumber] < 100) {
+        if (accounts[accountNumber-1] < 100) {
           cout << "Low Balance";
         }
-        cout << "Your current balance is: $" << accounts[accountNumber] << endl;
+        cout << "Your current balance is: $" << accounts[accountNumber-1] << endl;
         // FUTURE : Find a way to go back to the menu repetitively
         selection = menu();
         break;
@@ -59,9 +59,9 @@ int main() {
         cout << "Please enter the amount that you would like to deposit: $";
         cin >> depositAmount;
         if (depositAmount > 0) {
-          cout << "Thank you! You have succesfully deposited: $";
-          accounts[accountNumber]+=depositAmount;
-          cout << "Your new balance is: $" << accounts[accountNumber] << endl;
+          cout << "Thank you! You have succesfully deposited: $" << depositAmount;
+          accounts[accountNumber-1]+=depositAmount;
+          cout << "Your new balance is: $" << accounts[accountNumber-1] << endl;
         } else if (depositAmount < 0) {
           cout << "You have entered a negative amount, please enter a new amount: $";
           cin >> depositAmount;
@@ -69,9 +69,9 @@ int main() {
             cout << "You have entered a negative amount again. You will now be taken to the main menu\n";
             // FUTURE : Find a way to go back to the menu repetitively
           } else {
-            cout << "Thank you! You have succesfully deposited: $";
-            accounts[accountNumber]+=depositAmount;
-            cout << "Your new balance is: $" << accounts[accountNumber] << endl;
+            cout << "Thank you! You have succesfully deposited: $" << depositAmount;
+            accounts[accountNumber-1]+=depositAmount;
+            cout << "Your new balance is: $" << accounts[accountNumber-1] << endl;
           }
         }
         selection = menu();
@@ -80,20 +80,20 @@ int main() {
         double withdraw;
         cout << "Please enter the amount that you would like to withdraw: $";
         cin >> withdraw;
-        if (withdraw > accounts[accountNumber]) {
-          cout << "Sorry you have insufficient funds to perform that transaction, you requested: $" << withdraw << " but your current balance is: $" << accounts[accountNumber] << endl;
+        if (withdraw > accounts[accountNumber-1]) {
+          cout << "Sorry you have insufficient funds to perform that transaction, you requested: $" << withdraw << " but your current balance is: $" << accounts[accountNumber-1] << endl;
           cout << "Please try again. What amount would you like to withdraw: $";
           cin >> withdraw;
-          if (withdraw > accounts[accountNumber]) {
+          if (withdraw > accounts[accountNumber-1]) {
             cout << "Sorry you have entered an insufficient amount once again. You will now be taken back to the main menu\n";
             // FUTURE : Menu
-          } else if (withdraw < accounts[accountNumber]) {
-            cout << "You have withdrawn: $" << withdraw << " your current balance is now: $" << accounts[accountNumber]-withdraw << endl;
-            accounts[accountNumber]-=withdraw;
+          } else if (withdraw < accounts[accountNumber-1]) {
+            cout << "You have withdrawn: $" << withdraw << " your current balance is now: $" << accounts[accountNumber-1]-withdraw << endl;
+            accounts[accountNumber-1]-=withdraw;
           }
-        } else if (withdraw < accounts[accountNumber]) {
-          cout << "You have withdrawn: $" << withdraw << " your current balance is now: $" << accounts[accountNumber]-withdraw << endl;
-          accounts[accountNumber]-=withdraw;
+        } else if (withdraw < accounts[accountNumber-1]) {
+          cout << "You have withdrawn: $" << withdraw << " your current balance is now: $" << accounts[accountNumber-1]-withdraw << endl;
+          accounts[accountNumber-1]-=withdraw;
         }
         selection = menu();
         break;
